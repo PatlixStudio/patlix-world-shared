@@ -20,6 +20,8 @@ export interface TaskDto {
   status: TaskStatus;
   projectId?: string;
   assignedAgentId?: string;
+  /** Owning orchestration plan, when created by Aurel. */
+  planId?: string;
   progress: number;
   /** Most recent human-readable activity, e.g. "Running integration tests". */
   currentActivity?: string;

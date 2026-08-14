@@ -3,6 +3,7 @@ import type { TaskDto } from './task';
 import type { ProjectDto } from './project';
 import type { PropertyDto } from './property';
 import type { CompanyDto } from './company';
+import type { PlanDto } from './plan';
 
 /**
  * Domain events emitted by the backend and broadcast over the `/world` socket.
@@ -35,7 +36,16 @@ export type PatlixEvent =
   | { type: 'task.failed'; taskId: string; error?: string }
   | { type: 'workflow.started'; workflowId: string }
   | { type: 'workflow.completed'; workflowId: string }
-  | { type: 'workflow.failed'; workflowId: string; error?: string };
+  | { type: 'workflow.failed'; workflowId: string; error?: string }
+  | { type: 'orchestration.plan.created'; plan: PlanDto }
+  | { type: 'orchestration.plan.updated'; plan: PlanDto }
+  | {
+      type: 'orchestration.plan.step.assigned';
+      planId: string;
+      stepId: string;
+      taskId: string;
+      agentId: string;
+    };
 
 /** Envelope persisted in the events table and emitted over the wire. */
 export interface EventEnvelope {
