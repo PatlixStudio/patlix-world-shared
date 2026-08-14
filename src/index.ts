@@ -3,6 +3,7 @@ export * from './types/task';
 export * from './types/project';
 export * from './types/company';
 export * from './types/property';
+export * from './types/workflow';
 export * from './types/world';
 export * from './types/event';
 export * from './types/user';

@@ -1,3 +1,9 @@
+import type { AgentDto } from './agent';
+import type { ProjectDto } from './project';
+import type { CompanyDto } from './company';
+import type { PropertyDto } from './property';
+import type { TaskDto } from './task';
+
 /** World coordinates for any entity (agent, property, zone landmark). */
 export interface WorldPoint {
   x: number;
