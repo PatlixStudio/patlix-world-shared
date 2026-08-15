@@ -8,12 +8,14 @@ export enum PlanStepStatus {
   CANCELLED = 'CANCELLED',
 }
 
-/** Lifecycle of an orchestration plan (Aurel: request → plan → assign). */
+/** Lifecycle of an orchestration plan (Aurel: request → plan → approve → assign). */
 export enum PlanStatus {
   PLANNING = 'PLANNING',
+  PENDING_APPROVAL = 'PENDING_APPROVAL',
   ACTIVE = 'ACTIVE',
   COMPLETED = 'COMPLETED',
   FAILED = 'FAILED',
+  REJECTED = 'REJECTED',
   CANCELLED = 'CANCELLED',
 }
 
@@ -43,4 +45,6 @@ export interface PlanDto {
 export interface OrchestrationRequest {
   title: string;
   description?: string;
+  /** Gate plan execution on an explicit human approval (default true). */
+  requireApproval?: boolean;
 }
